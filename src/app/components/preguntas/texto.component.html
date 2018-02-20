@@ -1,10 +1,32 @@
 <!-- Modal Structure -->
 <div id="modalTexto" class="modal">
-  <div class="modal-content">
-    <h4>Pregunta de texto</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
+  <form [formGroup]="preguntaTexto" (ngSubmit)="guardaTexto()" novalidate>
+    <div class="modal-content">
+      <h4>Pregunta de texto</h4>
+      <p>Escriba la pregunta, este tipo de preguntas son de respuesta abierta.</p>
+
+      <div class="row">
+        <div class="input-field col s12">
+           <i class="material-icons prefix"
+              [ngClass]="{'red-text text-darken-4': !preguntaTexto.valid && !preguntaTexto.pristine}">mode_edit</i>
+          <input id="texto" type="text" class="validate" formControlName="pregunta"
+                 [ngClass]="{'invalid': !preguntaTexto.valid && !preguntaTexto.pristine}">
+          <label for="texto"
+                 [ngClass]="{'red-text text-darken-4': !preguntaTexto.valid && !preguntaTexto.pristine}">
+                 Escriba aquí la pregunta
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="waves-effect waves-red btn-flat"
+              (click)="cerrarModal('Texto')">
+        Cancelar
+      </button>
+      <button type="submit" class="blue darken-4 white-text waves-effect light btn-flat"
+              [disabled]="!preguntaTexto.valid">
+        Guardar
+      </button>
+    </div>
+  </form>
 </div>
