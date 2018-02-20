@@ -6,6 +6,7 @@ import { NavegacionComponent } from './components/navegacion/navegacion.componen
 import { TextoComponent } from './components/preguntas/texto.component';
 import { CasillasComponent } from './components/preguntas/casillas.component';
 import { DesplegableComponent } from './components/preguntas/desplegable.component';
+import { CuestionarioComponent } from './components/cuestionario/cuestionario.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { DesplegableComponent } from './components/preguntas/desplegable.compone
     NavegacionComponent,
     TextoComponent,
     CasillasComponent,
-    DesplegableComponent
+    DesplegableComponent,
+    CuestionarioComponent
   ],
   imports: [
     BrowserModule
