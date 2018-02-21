@@ -3,7 +3,7 @@
   <form [formGroup]="preguntaCasillas" (ngSubmit)="guardaCasillas()" novalidate>
     <div class="modal-content">
       <h4>Pregunta de casillas</h4>
-      <p>Escriba la pregunta, este tipo de preguntas son de respuesta abierta.</p>
+      <!-- <p>Escriba la pregunta, este tipo de preguntas son de respuesta abierta.</p> -->
 
       <div class="row">
         <div class="input-field col s12">
@@ -48,7 +48,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="waves-effect waves-red btn-flat"
-              (click)="cerrarModal('Texto')">
+              (click)="cerrarModal('Casillas')">
         Cancelar
       </button>
       <button type="submit" class="blue darken-4 white-text waves-effect light btn-flat"

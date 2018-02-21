@@ -7,12 +7,31 @@
         <label for="last_name">{{ item.pregunta }}</label>
       </div>
 
-      <div class="input-field" *ngIf="item.tipo === 2">
+      <div *ngIf="item.tipo === 2">
         <h5>{{ item.pregunta }}</h5>
         <p *ngFor="let opcion of item.respuestas">
           <input type="checkbox" id="{{$index}}" />
-          <label for="{{$index}}" (click)="cambia(prueba)">{{ opcion.texto }}</label>
+          <label for="{{$index}}">{{ opcion.texto }}</label>
         </p>
+      </div>
+
+      <div class="input-field" *ngIf="item.tipo === 3">
+        <h5>{{ item.pregunta }}</h5>
+        <div class="show-on-medium-and-up hide-on-small-only">
+          <select>
+            <option value="0" disabled selected>Selecciona una opcion</option>
+            <option value="{{ opcion.id }}" *ngFor="let opcion of item.respuestas">{{ opcion.texto }}</option>
+          </select>
+          <!-- <label>{{ item.pregunta }}</label> -->
+        </div>
+
+        <div class="hide-on-med-and-up show-on-small">
+          <!-- <label>{{ item.pregunta }}</label> -->
+          <select class="browser-default">
+            <option value="0" disabled selected>Selecciona una opcion</option>
+            <option value="{{ opcion.id }}" *ngFor="let opcion of item.respuestas">{{ opcion.texto }}</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
