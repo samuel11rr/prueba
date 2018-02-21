@@ -15,6 +15,10 @@ export class CuestionarioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getListado();
+  }
+
+  getListado(){
     this.listado = this._preguntasService.getListado().listado;
     console.log(this.listado);
   }

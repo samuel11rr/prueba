@@ -68,6 +68,7 @@ export class DesplegableComponent implements OnInit {
     this.preguntaDesplegable.reset();
     this.cerrarModal('Desplegable');
     this._preguntasService.getListado();
+    document.getElementById('btnActualiza').click();
   }
 
   cerrarModal(tipo){

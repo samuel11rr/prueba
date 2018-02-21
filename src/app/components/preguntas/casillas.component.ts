@@ -71,6 +71,7 @@ export class CasillasComponent implements OnInit {
     this.preguntaCasillas.reset();
     this.cerrarModal('Casillas');
     this._preguntasService.getListado();
+    document.getElementById('btnActualiza').click();
   }
 
   cerrarModal(tipo){

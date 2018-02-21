@@ -6,7 +6,7 @@
 
       <div *ngIf="item.tipo === 1">
         <h5>
-          {{ i }}{{ item.pregunta | uppercase}}
+          {{ item.pregunta | uppercase}}
           <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
         </h5>
         <div class="input-field">
@@ -19,7 +19,7 @@
 
       <div *ngIf="item.tipo === 2">
         <h5>
-          {{ i }}{{ item.pregunta | uppercase}}
+          {{ item.pregunta | uppercase}}
           <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
         </h5>
         <p *ngFor="let opcion of item.respuestas">
@@ -31,7 +31,7 @@
 
       <div class="input-field" *ngIf="item.tipo === 3">
         <h5>
-          {{ i }}{{ item.pregunta | uppercase}}
+          {{ item.pregunta | uppercase}}
           <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
         </h5>
         <div class="show-on-medium-and-up hide-on-small-only">
@@ -59,4 +59,5 @@
   <i class="material-icons icono-grande">info_outline</i>
   <p>No se han agregado preguntas</p>
 </div>
+<button type="button" class="hide" id="btnActualiza" (click)="getListado()"></button>
 </div>

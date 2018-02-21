@@ -37,6 +37,7 @@ export class TextoComponent implements OnInit {
     this.preguntaTexto.reset();
     this.cerrarModal('Texto');
     this._preguntasService.getListado();
+    document.getElementById('btnActualiza').click();
   }
 
   cerrarModal(tipo){
