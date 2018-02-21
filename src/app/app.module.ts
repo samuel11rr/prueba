@@ -24,6 +24,7 @@ import { CuestionarioComponent } from './components/cuestionario/cuestionario.co
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [

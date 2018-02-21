@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PreguntasService {
-  listadoPreguntas = JSON.parse(localStorage.getItem('preguntasGuardadas'));
+  listadoPreguntas = {
+    listado: JSON.parse(localStorage.getItem('preguntasGuardadas')),
+    resumen: {}
+  }
   resumen = {
     totales: 0,
     texto: 0,
@@ -11,8 +14,8 @@ export class PreguntasService {
   }
 
   constructor() {
-    if ( this.listadoPreguntas === null ) {
-      this.listadoPreguntas = [];
+    if ( this.listadoPreguntas.listado === null ) {
+      this.listadoPreguntas.listado = [];
     }
   }
 
@@ -25,31 +28,34 @@ export class PreguntasService {
   getListado(){
     this.resetContadores();
 
-    if ( this.listadoPreguntas.length === 0 ) {
-        return this.resumen;
+    if ( this.listadoPreguntas.listado.length === 0 ) {
+        this.listadoPreguntas.resumen = this.resumen;
+        return this.listadoPreguntas;
     } else{
-      this.listadoPreguntas = JSON.parse(localStorage.getItem('preguntasGuardadas'));
-      this.resumen.totales = this.listadoPreguntas.length;
+      this.listadoPreguntas.listado = JSON.parse(localStorage.getItem('preguntasGuardadas'));
+      this.resumen.totales = this.listadoPreguntas.listado.length;
 
-      for (let i = 0; i < this.listadoPreguntas.length; i++) {
-          if ( this.listadoPreguntas[i].tipo === 1 ) {
+      for (let i = 0; i < this.listadoPreguntas.listado.length; i++) {
+          if ( this.listadoPreguntas.listado[i].tipo === 1 ) {
               this.resumen.texto++;
           }
-          if ( this.listadoPreguntas[i].tipo === 2 ) {
+          if ( this.listadoPreguntas.listado[i].tipo === 2 ) {
               this.resumen.casillas++;
           }
-          if ( this.listadoPreguntas[i].tipo === 3 ) {
+          if ( this.listadoPreguntas.listado[i].tipo === 3 ) {
               this.resumen.desplegable++;
           }
       }
-      return this.resumen;
+
+      this.listadoPreguntas.resumen = this.resumen;
+      return this.listadoPreguntas;
     }
   }
 
   nuevaPregunta(datos){
-    this.listadoPreguntas.push(datos);
+    this.listadoPreguntas.listado.push(datos);
     // console.log(this.listadoPreguntas);
-    localStorage.setItem('preguntasGuardadas', JSON.stringify(this.listadoPreguntas));
+    localStorage.setItem('preguntasGuardadas', JSON.stringify(this.listadoPreguntas.listado));
     return this.getListado();
   }
 }

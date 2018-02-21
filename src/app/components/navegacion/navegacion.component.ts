@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PreguntasService } from '../../services/preguntas.service';
 declare var $: any;
 
 @Component({
@@ -6,13 +7,15 @@ declare var $: any;
   templateUrl: './navegacion.component.html'
 })
 export class NavegacionComponent implements OnInit {
-
-  constructor() { }
+  listado = {};
+  constructor( private _preguntasService:PreguntasService ) {}
 
   ngOnInit() {
     $(document).ready(function(){
       $('.modal').modal();
     });
+
+    this.listado = this._preguntasService.getListado();
   }
 
   abreModal(tipo){

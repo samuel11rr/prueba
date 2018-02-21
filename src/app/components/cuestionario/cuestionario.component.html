@@ -1,3 +1,19 @@
-<p>
-  cuestionario works!
-</p>
+<div class="container">
+  <h4>Formulario:</h4>
+  <div class="row" *ngIf="listado && listado.length > 0">
+    <div class="col s12" *ngFor="let item of listado">
+      <div class="input-field" *ngIf="item.tipo === 1">
+        <input id="last_name" type="text" class="validate">
+        <label for="last_name">{{ item.pregunta }}</label>
+      </div>
+
+      <div class="input-field" *ngIf="item.tipo === 2">
+        <h5>{{ item.pregunta }}</h5>
+        <p *ngFor="let opcion of item.respuestas">
+          <input type="checkbox" id="{{$index}}" />
+          <label for="{{$index}}" (click)="cambia(prueba)">{{ opcion.texto }}</label>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

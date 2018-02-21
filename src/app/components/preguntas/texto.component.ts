@@ -28,7 +28,6 @@ export class TextoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this._preguntasService.getListado());
   }
 
   guardaTexto(){
