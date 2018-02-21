@@ -58,4 +58,8 @@ export class PreguntasService {
     localStorage.setItem('preguntasGuardadas', JSON.stringify(this.listadoPreguntas.listado));
     return this.getListado();
   }
+
+  actualizaListado(datos){
+    localStorage.setItem('preguntasGuardadas', JSON.stringify(datos));
+  }
 }

@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-$titleColor: #00ff00;
-$colorPrimario: #0d47a1;
+$notificacion: #ccc;
 
-.titulo{
-  color: $titleColor;
+.espacio{
+  height: 1em;
+}
+
+.icono-grande{
+  font-size: 5em;
+  color: $notificacion;
+}
+
+.notificacion{
+  color: $notificacion;
 }

@@ -1,22 +1,39 @@
 <div class="container">
+<form *ngIf="listado && listado.length > 0">
   <h4>Formulario:</h4>
-  <div class="row" *ngIf="listado && listado.length > 0">
-    <div class="col s12" *ngFor="let item of listado">
-      <div class="input-field" *ngIf="item.tipo === 1">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">{{ item.pregunta }}</label>
+  <div class="row">
+    <div class="col s12" *ngFor="let item of listado; let i = index">
+
+      <div *ngIf="item.tipo === 1">
+        <h5>
+          {{ i }}{{ item.pregunta | uppercase}}
+          <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
+        </h5>
+        <div class="input-field">
+          <input id="txt{{i}}" type="text" class="validate">
+          <label for="txt{{i}}">Respuesta</label>
+        </div>
       </div>
 
+      <div class="espacio"></div>
+
       <div *ngIf="item.tipo === 2">
-        <h5>{{ item.pregunta }}</h5>
+        <h5>
+          {{ i }}{{ item.pregunta | uppercase}}
+          <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
+        </h5>
         <p *ngFor="let opcion of item.respuestas">
-          <input type="checkbox" id="{{$index}}" />
-          <label for="{{$index}}">{{ opcion.texto }}</label>
+          <input type="checkbox" id="op{{opcion.id}}" />
+          <label for="op{{opcion.id}}">{{ opcion.texto }}</label>
         </p>
+        <div class="espacio"></div>
       </div>
 
       <div class="input-field" *ngIf="item.tipo === 3">
-        <h5>{{ item.pregunta }}</h5>
+        <h5>
+          {{ i }}{{ item.pregunta | uppercase}}
+          <a class="btn-floating waves-effect waves-light red" (click)=elimina(i)><i class="material-icons">delete</i></a>
+        </h5>
         <div class="show-on-medium-and-up hide-on-small-only">
           <select>
             <option value="0" disabled selected>Selecciona una opcion</option>
@@ -32,7 +49,14 @@
             <option value="{{ opcion.id }}" *ngFor="let opcion of item.respuestas">{{ opcion.texto }}</option>
           </select>
         </div>
+        <div class="espacio"></div>
       </div>
     </div>
   </div>
+</form>
+
+<div  *ngIf="listado && listado.length < 1" class="center-align notificacion">
+  <i class="material-icons icono-grande">info_outline</i>
+  <p>No se han agregado preguntas</p>
+</div>
 </div>

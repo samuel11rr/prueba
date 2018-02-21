@@ -65,6 +65,7 @@ export class DesplegableComponent implements OnInit {
     this.nueva.pregunta = this.preguntaDesplegable.controls['preguntac'].value;
     this.nueva.respuestas = this.opciones;
     console.log(this._preguntasService.nuevaPregunta( this.nueva ));
+    this.preguntaDesplegable.reset();
     this.cerrarModal('Desplegable');
     this._preguntasService.getListado();
   }

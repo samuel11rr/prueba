@@ -34,6 +34,7 @@ export class TextoComponent implements OnInit {
     this.nueva.pregunta = this.preguntaTexto.controls['pregunta'].value;
     // console.log(this.nueva);
     console.log(this._preguntasService.nuevaPregunta( this.nueva ));
+    this.preguntaTexto.reset();
     this.cerrarModal('Texto');
     this._preguntasService.getListado();
   }

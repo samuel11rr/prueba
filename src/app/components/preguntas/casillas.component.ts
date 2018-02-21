@@ -68,6 +68,7 @@ export class CasillasComponent implements OnInit {
     this.nueva.pregunta = this.preguntaCasillas.controls['preguntac'].value;
     this.nueva.respuestas = this.opciones;
     console.log(this._preguntasService.nuevaPregunta( this.nueva ));
+    this.preguntaCasillas.reset();
     this.cerrarModal('Casillas');
     this._preguntasService.getListado();
   }

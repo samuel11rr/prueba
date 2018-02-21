@@ -7,7 +7,7 @@ declare var $: any;
   templateUrl: './cuestionario.component.html'
 })
 export class CuestionarioComponent implements OnInit {
-  listado = {};
+  listado = [];
   constructor( private _preguntasService:PreguntasService ) {
     $(document).ready(function() {
       $('select').material_select();
@@ -16,7 +16,14 @@ export class CuestionarioComponent implements OnInit {
 
   ngOnInit() {
     this.listado = this._preguntasService.getListado().listado;
-    console.log(this.listado)
+    console.log(this.listado);
+  }
+
+  elimina(id){
+    this.listado.splice(id,1);
+    this._preguntasService.actualizaListado( this.listado );
+
+    this.listado = this._preguntasService.getListado().listado;
   }
 
 }
